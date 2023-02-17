@@ -49,6 +49,7 @@ def test_sha(value_to_test):
 
 #encode() converts the string into bytes to be accepted by the hash function.
 for pc_maker in pc_makers:
+    test_sha(pc_maker.capitalize())
     test_sha(pc_maker)
     test_sha(pc_maker.upper())
     test_sha(pc_maker.lower())
