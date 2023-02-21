@@ -2,7 +2,7 @@
 
 import hashlib
 
-test_sha = True
+test_sha_found = False
 
 pc_makers = ['Dell',
     'HP',
@@ -32,15 +32,16 @@ pc_makers = ['Dell',
 
 
 def test_sha(value_to_test):
-    while True:
-        hash_instance = hashlib.sha256(value_to_test.encode())
-        string_hash = hash_instance.hexdigest() 
-        # print(value_to_test)
-        print(string_hash)
+    hash_instance = hashlib.sha256(value_to_test.encode())
+    string_hash = hash_instance.hexdigest() 
+    # print(value_to_test)
+    print(string_hash)
 
-        if string_hash == 'f96dcd14273d3eb067b188a7536c7ce8cde51374525d0d2822aa8d7a534248b4':
-            print('RESULT: ' + value_to_test)
-            return False
+    if string_hash == 'f96dcd14273d3eb067b188a7536c7ce8cde51374525d0d2822aa8d7a534248b4':
+        print('RESULT: ' + value_to_test)
+        return True
+    else:
+        return False
 
     #hexidigest() returns the encoded data in hexadecimal format
     # print(result.hexdigest())
@@ -52,9 +53,12 @@ def test_sha(value_to_test):
 
 
 #encode() converts the string into bytes to be accepted by the hash function.
-while test_sha == True:
-    for pc_maker in pc_makers:
-        test_sha(pc_maker.capitalize())
-        test_sha(pc_maker)
-        test_sha(pc_maker.upper())
-        test_sha(pc_maker.lower())
+for pc_maker in pc_makers:
+    if test_sha(pc_maker.capitalize()):
+        break
+    if test_sha(pc_maker):
+        break
+    if test_sha(pc_maker.upper()):
+        break
+    if test_sha(pc_maker.lower()):
+        break
